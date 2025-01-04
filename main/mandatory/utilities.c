@@ -6,8 +6,13 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:55:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/04 17:55:37 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/04 18:25:41 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
+
+int execution(int ac, char **av)
+{
+	
+}
