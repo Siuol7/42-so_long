@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 03:07:32 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/05 03:23:36 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/05 04:30:49 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	character_count(t_map *map)
 			else if (map->game_map[row][col] == 'C')
 				map->char_C++;
 			else
-				game_map_error(0, "Error\n Invalid character");
+				game_map_error(0, "Error:\nInvalid character");
 			col++;
 		}
 		row++;

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 02:49:42 by caonguye          #+#    #+#             */
-/*   Updated: 2024/12/18 19:42:07 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/05 04:14:53 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdint.h>
 # include <stdlib.h>
 
-# define BUFFER_SIZE 1024
+# define BUFFER_SIZE 2041
 
 char	*ft_putchar_fd(int c);
 char	*ft_putstr_fd(char *s);

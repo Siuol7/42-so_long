@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/05 04:09:44 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/05 04:22:39 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,19 @@ typedef struct s_map
 }	t_map;
 
 //Utilities
-int 	execution(int ac, char **av);
+int 	execution(char **av);
 
 //PARSING
 //read_map
 void	read_map(char *map_name, t_map *map);
 
 //map_validation
-int		map_validation(t_map *map);
+void		map_validation(t_map *map);
+
+//utils
+void	character_count(t_map *map);
+
+//ERROR_HANDLING
+void	game_map_error(int32_t status, char *msg);
 
 #endif

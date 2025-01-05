@@ -28,7 +28,7 @@ PARSING_C			:=	map_validation.c	\
 						read_map.c			\
 						utils.c
 
-ERROR_C				:= error_parsing.c
+ERROR_C				:= error_handling.c
 
 SRCS				:= 			$(addprefix ${MAIN}/,					${MAIN_C})			\
 								$(addprefix	${MANDATORY}/${PARSING}/,	${PARSING_C})		\
