@@ -6,29 +6,11 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 18:28:14 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/05 02:30:45 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/05 02:58:16 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
-
-void	validate_map(t_map *map)
-{
-	int	i;
-	int	temp;
-
-	i = 1;
-	temp = ft_strlen(map->game_map[0]);
-	while (map->game_map[i])
-	{
-		if (temp != map->game_map[i])
-			game_map_error(0);
-		temp = map->game_map[i];
-		i++;
-	}
-	map->length = ft_strlen(map->game_map[0]);
-	map->width = ft_2d_size(map->game_map);
-}
 
 void	get_map_1d(int fd, t_map *map)
 {

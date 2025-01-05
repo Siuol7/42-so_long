@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/05 02:16:24 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/05 03:13:54 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ typedef struct s_map
 	char		**game_map;
 	int32_t		length;
 	int32_t		width;
+	int32_t		char_1;
+	int32_t		char_0;
+	int32_t		char_E;
+	int32_t		char_P;
+	int32_t		char_C;
 }	t_map;
 
 #endif
