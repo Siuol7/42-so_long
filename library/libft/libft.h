@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 01:01:11 by caonguye          #+#    #+#             */
-/*   Updated: 2024/12/18 19:50:06 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/05 01:48:45 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int		ft_isascii(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 
+int		ft_2d_size(char **arr);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_strcmp(const char *s1, const char *s2);
