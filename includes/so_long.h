@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/05 21:09:25 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/05 21:52:40 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef	struct s_queue
 typedef struct s_map
 {
 	char		**game_map;
+	t_point		start;
+	t_point		end;
 	int32_t		length;
 	int32_t		width;
 	int32_t		char_1;
