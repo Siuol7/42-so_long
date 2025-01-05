@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/05 03:13:54 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/05 04:09:44 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,15 @@ typedef struct s_map
 	int32_t		char_P;
 	int32_t		char_C;
 }	t_map;
+
+//Utilities
+int 	execution(int ac, char **av);
+
+//PARSING
+//read_map
+void	read_map(char *map_name, t_map *map);
+
+//map_validation
+int		map_validation(t_map *map);
 
 #endif

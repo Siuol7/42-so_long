@@ -6,13 +6,13 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 02:57:42 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/05 03:46:47 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/05 04:09:52 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-void	wall_border_validation(t_map *map)
+static void	wall_border_validation(t_map *map)
 {
 	int32_t	row;
 	int32_t	col;
@@ -41,7 +41,7 @@ void	wall_border_validation(t_map *map)
 	}
 }
 
-void	character_validation(t_map *map)
+static void	character_validation(t_map *map)
 {
 	character_count(map);
 	if	(map->char_1 != (map->length + map->width) * 2)
@@ -56,7 +56,7 @@ void	character_validation(t_map *map)
 		game_map_error(0, "Error\n No path");
 }
 
-void	shape_validation(t_map *map)
+static void	shape_validation(t_map *map)
 {
 	int32_t	i;
 	int32_t	temp;
@@ -74,10 +74,10 @@ void	shape_validation(t_map *map)
 	map->width = ft_2d_size(map->game_map);
 }
 
-int	map_validation(t_map *map)
+void	map_validation(t_map *map)
 {
 	shape_validation(map);
 	character_validation(map);
 	wall_border_validation(map);
-	valid_path_validation(map);
+	//valid_path_validation(map);
 }

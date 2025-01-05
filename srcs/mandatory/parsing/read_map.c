@@ -6,13 +6,13 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 18:28:14 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/05 02:58:16 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/05 04:08:38 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-void	get_map_1d(int fd, t_map *map)
+static void	get_map_1d(int fd, t_map *map)
 {
 	char		line[BUFFER_SIZE];
 	int32_t		readbytes;
@@ -38,4 +38,5 @@ void	read_map(char *map_name, t_map *map)
 	// if (fd < 2)
 	// 	readmap_error();
 	get_map_1d(fd, map);
+	map_validation(map);
 }
