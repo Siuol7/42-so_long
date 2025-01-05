@@ -6,11 +6,24 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 03:07:32 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/05 04:30:49 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/05 16:39:55 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
+
+void	file_validation(char *map_file, int32_t *fd)
+{
+	int32_t	len;
+
+	*fd = (int32_t)open(map_file, O_RDONLY);
+	if (fd < 0)
+		map_file_error(0, "Error:\n Opening file failed", *fd);
+	len = (int32_t)ft_strlen(map_file);
+	if (len == 0 || map_file[len - 4] != '.' || map_file[len - 3] != 'b'
+		|| map_file[len - 2] != 'e' || map_file[len - 1] != 'r')
+			map_file_error(0, "Error:\nRequired .ber file", *fd);
+}
 
 void	character_count(t_map *map)
 {
@@ -34,7 +47,7 @@ void	character_count(t_map *map)
 			else if (map->game_map[row][col] == 'C')
 				map->char_C++;
 			else
-				game_map_error(0, "Error:\nInvalid character");
+				game_map_error(0, "Error:\nInvalid character", map);
 			col++;
 		}
 		row++;

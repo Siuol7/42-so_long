@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/05 04:22:39 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/05 21:09:25 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,20 @@
 
 # define BUFFER_SIZE 2041
 
+typedef struct s_point
+{
+	int32_t	x;
+	int32_t	y;
+}	t_point;
+
+typedef	struct s_queue
+{
+	t_point	*data;
+	int32_t	top;
+	int32_t	bottom;
+	int32_t	size;
+}	t_queue;
+
 typedef struct s_map
 {
 	char		**game_map;
@@ -48,15 +62,17 @@ int 	execution(char **av);
 
 //PARSING
 //read_map
-void	read_map(char *map_name, t_map *map);
+void	read_map(char *map_file, t_map *map);
 
 //map_validation
 void		map_validation(t_map *map);
 
 //utils
 void	character_count(t_map *map);
+void	file_validation(char *map_file, int *fd);
 
 //ERROR_HANDLING
-void	game_map_error(int32_t status, char *msg);
+void	game_map_error(int32_t status, char *msg, t_map *map);
+void	map_file_error(int32_t status, char *msg, int32_t fd);
 
 #endif

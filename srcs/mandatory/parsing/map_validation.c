@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 02:57:42 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/05 04:27:45 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/05 16:20:18 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	wall_border_validation(t_map *map)
 		while (++col < map->length)
 		{
 			if (map->game_map[row][col] != '1')
-				game_map_error(0, "Error:\nInvalid boder");
+				game_map_error(0, "Error:\nInvalid boder", map);
 		}
 		row += (map->width - 1);
 	}
@@ -35,7 +35,7 @@ static void	wall_border_validation(t_map *map)
 		while (++row < map->length)
 		{
 			if (map->game_map[row][col] != '1')
-				game_map_error(0, "Error:\nInvalid boder");
+				game_map_error(0, "Error:\nInvalid border", map);
 		}
 		col += (map->length - 1);
 	}
@@ -44,16 +44,16 @@ static void	wall_border_validation(t_map *map)
 static void	character_validation(t_map *map)
 {
 	character_count(map);
-	if	(map->char_1 != (map->length + map->width) * 2)
-		game_map_error(0, "Error:\nInvalid border");
+	if	(map->char_1 != (map->length + map->width) * 2 - 4)
+		game_map_error(0, "Error:\nInvalid border", map);
 	else if (map->char_P != 1)
-		game_map_error(0, "Error:\nInvalid number of players");
+		game_map_error(0, "Error:\nInvalid number of players", map);
 	else if (map->char_E != 1)
-		game_map_error(0, "Error:\nInvalid number of exits");
+		game_map_error(0, "Error:\nInvalid number of exits", map);
 	else if (map->char_C < 1)
-		game_map_error(0, "Error:\nNo collectibles");
+		game_map_error(0, "Error:\nNo collectibles", map);
 	else if (map->char_0 == 0)
-		game_map_error(0, "Error:\nNo path");
+		game_map_error(0, "Error:\nNo path", map);
 }
 
 static void	shape_validation(t_map *map)
@@ -65,9 +65,9 @@ static void	shape_validation(t_map *map)
 	temp = (int32_t)ft_strlen(map->game_map[0]);
 	while (map->game_map[i])
 	{
-		if (temp != (int32_t)ft_strlen(map->game_map[0]))
-			game_map_error(0, "Error:\nMap is not rectangular shape.");
-		temp = (int32_t)ft_strlen(map->game_map[0]);
+		if (temp != (int32_t)ft_strlen(map->game_map[i]))
+			game_map_error(0, "Error:\nMap is not rectangular shape.", map);
+		temp = (int32_t)ft_strlen(map->game_map[i]);
 		i++;
 	}
 	map->length = ft_strlen(map->game_map[0]);

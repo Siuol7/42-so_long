@@ -6,13 +6,13 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 18:28:14 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/05 04:26:37 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/05 16:30:47 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-static void	get_map_1d(int fd, t_map *map)
+static void	get_map(int fd, t_map *map)
 {
 	char		line[BUFFER_SIZE];
 	int32_t		readbytes;
@@ -27,16 +27,14 @@ static void	get_map_1d(int fd, t_map *map)
 	line[readbytes] = '\0';
 	map->game_map = ft_split(line, '\n');
 	if (!map->game_map || !*map->game_map)
-		game_map_error(0, "Error:\nGenerating map failed");
+		game_map_error(0, "Error:\nGenerating map failed", map);
 }
 
-void	read_map(char *map_name, t_map *map)
+void	read_map(char *map_file, t_map *map)
 {
 	int32_t	fd;
 
-	fd = open(map_name, O_RDONLY);
-	// if (fd < 2)
-	// 	readmap_error();
-	get_map_1d(fd, map);
+	file_validation(map_file, &fd);
+	get_map(fd, map);
 	map_validation(map);
 }
