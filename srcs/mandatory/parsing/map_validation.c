@@ -6,11 +6,17 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 02:57:42 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/05 16:20:18 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/06 17:01:28 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
+
+static void	valid_path_validation(t_map *map)
+{
+	if (!BFS(map, map->width, map->length))
+		path_error(0, "Error\n No path to exit", map);
+}
 
 static void	wall_border_validation(t_map *map)
 {
@@ -79,5 +85,5 @@ void	map_validation(t_map *map)
 	shape_validation(map);
 	character_validation(map);
 	wall_border_validation(map);
-	//valid_path_validation(map);
+	valid_path_validation(map);
 }

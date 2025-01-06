@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/05 21:52:40 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/06 16:45:27 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ typedef	struct s_queue
 	int32_t	size;
 }	t_queue;
 
+typedef struct s_dimension
+{
+	int	dy[4];
+	int	dx[4];
+}	t_dimension;
+
 typedef struct s_map
 {
 	char		**game_map;
@@ -72,6 +78,12 @@ void		map_validation(t_map *map);
 //utils
 void	character_count(t_map *map);
 void	file_validation(char *map_file, int *fd);
+
+//BFS
+void	enqueue(t_queue *q, t_point point);
+t_point	dequeue(t_queue *q);
+int		isEmpty(t_queue *q);
+void	assign_dimension(t_dimension *d);
 
 //ERROR_HANDLING
 void	game_map_error(int32_t status, char *msg, t_map *map);
