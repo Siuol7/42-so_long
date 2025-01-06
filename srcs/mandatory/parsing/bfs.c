@@ -6,11 +6,27 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 20:07:11 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/05 23:34:54 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/06 14:42:03 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
+
+void	enqueue(t_queue *q, t_point point)
+{
+	q->data[q->bottom++] = point;
+}
+
+t_point	dequeue(t_queue *q)
+{
+	return	q->data[q->top++];
+}
+
+int		isEmpty(t_queue *q)
+{
+	if (q->top == q->bottom)
+		return (1);
+}
 
 t_queue *create_queue(int32_t size)
 {
@@ -38,6 +54,6 @@ int	bfs(t_map *map)
 	q = create_queue(map->length * map->width);
 	if (!q)
 		memory_error(0, "Error\n Not enough memory", map);
+	visited[map->start.x][map->start.y] = 1;
 	
-
 }
