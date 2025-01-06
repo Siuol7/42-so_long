@@ -6,23 +6,21 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 20:07:11 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/06 17:21:06 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/06 19:51:51 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-static int	find_path(t_map *map, t_queue *q, int **visited, int i)
+static int32_t	find_path(t_map *map, t_queue *q, int32_t **visited, t_dimension *d)
 {
 	t_point		cur;
 	t_point		new;
-	t_dimension	*d;
+	int32_t		i;
 
-	d = malloc(sizeof(t_dimension));
-	if (!d)
-		memory_error(0, "Error\n Not enough memory", map);
 	assign_dimension(d);
-	while (isEmpty(q))
+
+	while (!isEmpty(q))
 	{
 		i = -1;
 		cur = dequeue(q);
@@ -30,12 +28,15 @@ static int	find_path(t_map *map, t_queue *q, int **visited, int i)
 		{
 			new.x = cur.x + d->dx[i];
 			new.y = cur.y + d->dy[i];
-		}
-		if (map->game_map[new.x][new.y] != '1' && visited[new.x][new.y] != 1)
-		{
-			if (new.x == map->end.x && new.y == map->end.y)
-				return (1);
-			enqueue(q, new);
+			if (new.x != 0 && new.x != map->width -1 && new.y != 0 && new.y != map->length -1
+				&& visited[new.x][new.y] != 1
+				&& map->game_map[new.x][new.y] != '1')
+			{
+				if (new.x == map->end.x && new.y == map->end.y)
+					return (1);
+				visited[new.x][new.y] = 1;
+				enqueue(q, new);
+			}
 		}
 	}
 	return (0);
@@ -57,22 +58,28 @@ t_queue *create_queue(int32_t size)
 	return (q);
 }
 
-int	BFS(t_map *map, int32_t width, int32_t length)
+int32_t	BFS(t_map *map, int32_t width, int32_t length)
 {
 	t_queue		*q;
-	int			i;
-	int			**visited;
+	t_dimension	*d;
+	int32_t		i;
+	int32_t		**visited;
 
 	i = 0;
+	d = malloc(sizeof(t_dimension));
+	if (!d)
+		memory_error(0, "Error:\n Not enough memory\n", map);
 	q = create_queue(map->length * map->width);
 	if (!q)
-		memory_error(0, "Error\n Not enough memory", map);
-	visited = malloc(width * sizeof(int *));
+		memory_error(0, "Error:\n Not enough memory\n", map);
+	visited = (int32_t **)malloc(width * sizeof(int32_t *));
 	while (i < width)
-		visited = malloc(length);
+		visited[i++] = (int32_t *)malloc(length * sizeof(int32_t));
 	visited[map->start.x][map->start.y] = 1;
 	enqueue(q, map->start);
-	if (find_path(map, q, visited, -1))
-		return (1);
-	return (0);
+	i = (find_path(map, q, visited, d));
+	//ft_free_2d((void **)visited);
+	free(d);
+	free(q);
+	return(i);
 }

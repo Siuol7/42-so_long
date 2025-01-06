@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/06 17:19:50 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/06 19:34:08 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct s_map
 }	t_map;
 
 //Utilities
-int 	execution(char **av);
+int32_t execution(char **av);
 
 //PARSING
 //read_map
@@ -82,9 +82,9 @@ void	file_validation(char *map_file, int *fd);
 //BFS
 void	enqueue(t_queue *q, t_point point);
 t_point	dequeue(t_queue *q);
-int		isEmpty(t_queue *q);
+int32_t	isEmpty(t_queue *q);
 void	assign_dimension(t_dimension *d);
-int		BFS(t_map *map, int32_t width, int32_t length);
+int32_t	BFS(t_map *map, int32_t width, int32_t length);
 t_queue *create_queue(int32_t size);
 
 //ERROR_HANDLING
