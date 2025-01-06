@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:51:28 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/06 16:45:15 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/06 17:20:18 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		isEmpty(t_queue *q)
 {
 	if (q->top == q->bottom)
 		return (1);
+	return (0);
 }
 
 void	assign_dimension(t_dimension *d)

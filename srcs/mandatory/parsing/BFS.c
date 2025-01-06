@@ -6,18 +6,21 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 20:07:11 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/06 16:59:38 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/06 17:21:06 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-static int	find_path(t_map *map, t_queue *q, char **visited, int i)
+static int	find_path(t_map *map, t_queue *q, int **visited, int i)
 {
 	t_point		cur;
 	t_point		new;
 	t_dimension	*d;
 
+	d = malloc(sizeof(t_dimension));
+	if (!d)
+		memory_error(0, "Error\n Not enough memory", map);
 	assign_dimension(d);
 	while (isEmpty(q))
 	{
