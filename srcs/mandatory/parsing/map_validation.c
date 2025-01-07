@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 02:57:42 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/06 19:55:16 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/07 02:31:41 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	valid_path_validation(t_map *map)
 {
-	if (!BFS(map, map->width, map->length))
+	if (!bfs(map, map->width, map->length))
 		path_error(0, "Error:\nNo path to exit\n", map);
 }
 
@@ -49,7 +49,7 @@ static void	wall_border_validation(t_map *map)
 
 static void	character_validation(t_map *map)
 {
-	character_count(map);
+	character_count(map, -1);
 	if (map->char_P != 1)
 		game_map_error(0, "Error:\nInvalid number of players\n", map);
 	if (map->char_E != 1)

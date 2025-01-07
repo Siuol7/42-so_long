@@ -27,8 +27,8 @@ MAIN_C				:=	main.c				\
 PARSING_C			:=	map_validation.c	\
 						read_map.c			\
 						utils.c				\
-						BFS.c				\
-						BFS_utils.c			
+						bfs.c				\
+						bfs_utils.c
 
 ERROR_C				:= error_handling.c
 

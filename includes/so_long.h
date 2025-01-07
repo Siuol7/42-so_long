@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/06 19:34:08 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/07 02:32:10 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ typedef	struct s_queue
 	int32_t	top;
 	int32_t	bottom;
 	int32_t	size;
+	int32_t	collec;
+	int32_t	exit;
 }	t_queue;
 
 typedef struct s_dimension
@@ -76,15 +78,15 @@ void	read_map(char *map_file, t_map *map);
 void		map_validation(t_map *map);
 
 //utils
-void	character_count(t_map *map);
+void	character_count(t_map *map, int32_t row);
 void	file_validation(char *map_file, int *fd);
 
-//BFS
+//bfs
 void	enqueue(t_queue *q, t_point point);
 t_point	dequeue(t_queue *q);
-int32_t	isEmpty(t_queue *q);
+int32_t	is_empty(t_queue *q);
 void	assign_dimension(t_dimension *d);
-int32_t	BFS(t_map *map, int32_t width, int32_t length);
+int32_t	bfs(t_map *map, int32_t width, int32_t length);
 t_queue *create_queue(int32_t size);
 
 //ERROR_HANDLING
