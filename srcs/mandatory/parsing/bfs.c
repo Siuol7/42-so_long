@@ -6,13 +6,31 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 20:07:11 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/07 04:03:14 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/07 04:32:35 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-static int32_t	find_path(t_map *map, t_queue *q, int32_t **visited, t_dimension *d)
+static void	move_in_graph(t_map *map, t_queue *q
+							, int32_t **visited, t_point new)
+{
+	if (new.x > 0 && new.x < map->width -1
+		&& new.y > 0 && new.y < map->length -1
+		&& visited[new.x][new.y] == 0
+		&& map->game_map[new.x][new.y] != '1')
+	{
+		if (new.x == map->end.x && new.y == map->end.y)
+			q->exit++;
+		else if (map->game_map[new.x][new.y] == 'C')
+			q->collec++;
+		visited[new.x][new.y] = 1;
+		enqueue(q, new);
+	}
+}
+
+static int32_t	find_path(t_map *map, t_queue *q
+							, int32_t **visited, t_dimension *d)
 {
 	t_point		cur;
 	t_point		new;
@@ -27,17 +45,7 @@ static int32_t	find_path(t_map *map, t_queue *q, int32_t **visited, t_dimension 
 		{
 			new.x = cur.x + d->dx[i];
 			new.y = cur.y + d->dy[i];
-
-			if (new.x > 0 && new.x < map->width -1 && new.y > 0 && new.y < map->length -1
-				&& visited[new.x][new.y] == 0 && map->game_map[new.x][new.y] != '1')
-			{
-				if (new.x == map->end.x && new.y == map->end.y)
-					q->exit++;
-				else if (map->game_map[new.x][new.y] == 'C')
-					q->collec++;
-				visited[new.x][new.y] = 1;
-				enqueue(q, new);
-			}
+			move_in_graph(map, q, visited, new);
 		}
 	}
 	if (q->collec == map->char_C && q->exit == 1)
