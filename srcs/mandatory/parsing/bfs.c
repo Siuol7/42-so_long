@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 20:07:11 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/07 03:33:56 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/07 04:03:14 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,7 @@ int32_t	bfs(t_map *map, int32_t width, int32_t length)
 	while (i < width)
 	{
 		visited[i] = (int32_t *)malloc(length * sizeof(int32_t));
-		ft_bzero(visited[i], sizeof(int32_t));
-		i++;
+		ft_bzero(visited[i++], sizeof(int32_t));
 	}
 	visited[map->start.x][map->start.y] = 1;
 	enqueue(q, map->start);
