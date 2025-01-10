@@ -47,40 +47,40 @@ all:	${LIBFT} ${FT_PRINTF_FD} ${NAME}
 
 #Compiling Rule
 %.o:	%.c
-	@echo "----------------------------Compiling----------------------------"
-	${CC} ${CFLAGS} -o $@ -c $< ${INCLUDE}
+	@echo "Compiling..."
+	@${CC} ${CFLAGS} -o $@ -c $< ${INCLUDE}
 
 #Create source library
 ${NAME}: ${OBJS} ${LIBFT} ${FT_PRINTF_FD}
-		cc ${OBJS} ${LIBFT} ${FT_PRINTF_FD} -o ${NAME}
+		@cc ${OBJS} ${LIBFT} ${FT_PRINTF_FD} -o ${NAME}
 
 # Build libft.a
 ${LIBFT}:
-		$(MAKE) -C ${LIBFT_DIR}
+		@$(MAKE) -C ${LIBFT_DIR}
 
 # Build ft_printf.a
 ${FT_PRINTF_FD}:
-		$(MAKE) -C ${FT_PRINTF_FD_DIR}
+		@$(MAKE) -C ${FT_PRINTF_FD_DIR}
 
 
 # Create bonus lib
 bonus : .bonus
 .bonus : ${OBJS_BN} ${LIBFT} ${FT_PRINTF_FD}
-		cc ${OBJS_BN} ${LIBFT} ${FT_PRINTF_FD} -o ${NAME}
+		@cc ${OBJS_BN} ${LIBFT} ${FT_PRINTF_FD} -o ${NAME}
 		@touch .bonus
 
 # Clean target
 clean:
-		rm -f ${OBJS} ${OBJS_BN} .bonus
-		$(MAKE) -C ${LIBFT_DIR} clean
-		$(MAKE) -C ${FT_PRINTF_FD_DIR} clean
+		@rm -f ${OBJS} ${OBJS_BN} .bonus
+		@$(MAKE) -C ${LIBFT_DIR} clean
+		@$(MAKE) -C ${FT_PRINTF_FD_DIR} clean
 
 # Fclean target
 fclean:
 		@echo "----------------------------Cleaning----------------------------"
-		rm -rf ${NAME} ${OBJS} ${OBJS_BN} .bonus
-		$(MAKE) -C ${LIBFT_DIR} fclean
-		$(MAKE) -C ${FT_PRINTF_FD_DIR} fclean
+		@rm -rf ${NAME} ${OBJS} ${OBJS_BN} .bonus
+		@$(MAKE) -C ${LIBFT_DIR} fclean
+		@$(MAKE) -C ${FT_PRINTF_FD_DIR} fclean
 		@echo "----------------------------Finished----------------------------"
 
 # Rebuild target

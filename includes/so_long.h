@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/07 02:32:10 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/10 13:20:27 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@ typedef struct s_map
 	int32_t		char_P;
 	int32_t		char_C;
 }	t_map;
+
+typedef struct s_solong
+{
+	t_map	*map;
+} t_solong;
 
 //Utilities
 int32_t execution(char **av);

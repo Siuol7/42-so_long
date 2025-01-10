@@ -27,25 +27,25 @@ all	:	${NAME}
 
 # Rule to compile source files into object files
 %.o: %.c
-	cc -Wall -Wextra -Werror -c -I. $< -o $@
+	@cc -Wall -Wextra -Werror -c -I. $< -o $@
 
 # Target to create the library
 ${NAME}	:	${OBJS}
-	ar rcs $@ $^
+	@ar rcs $@ $^
 
 # Target to create the library with bonus
 bonus: .bonus
 .bonus: ${NAME} ${OBJS_BN}
-	ar rcs ${NAME} ${OBJS_BN}
+	@ar rcs ${NAME} ${OBJS_BN}
 	@touch .bonus
 
 # Target to clean object files
 clean	:
-	rm -f ${OBJS} ${OBJS_BN} .bonus
+	@rm -f ${OBJS} ${OBJS_BN} .bonus
 
 # Target to clean library and object files
 fclean	: clean
-	rm -f ${NAME}
+	@rm -f ${NAME}
 
 # Target to rebuild (clean and build again)
 re	: fclean all
