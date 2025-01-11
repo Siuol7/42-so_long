@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/10 13:20:27 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/10 17:12:38 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <errno.h>
-//#include "MLX42.h"
+# include "MLX42.h"
 
 //Resolution 4k
 # define pixel 64
@@ -31,11 +31,49 @@
 
 # define BUFFER_SIZE 2041
 
+# define ENT_IMG 13
+
+//Wall and Ground
+# define WALL1 "../game_assets/wall/w1.png"
+# define WALL2 "../game_assets/wall/w2.png"
+# define WALL3 "../game_assets/wall/w3.png"
+# define WALL4 "../game_assets/wall/w4.png"
+# define WALLL "../game_assets/wall/left.png"
+# define WALLR "../game_assets/wall/right.png"
+# define WALLT "../game_assets/wall/top.png"
+# define WALLB "../game_assets/wall/bottom.png"
+# define GROUND "../game_assets/wall/ground.png"
+
+//Character
+# define CHARACTER "../game_assets/character/Walk.png"
+
+//Objects
+# define OPENED_GATE "../game_assets/objects/gate/open.png"
+# define CLOSED_GATE "../game_assets/objects/gate/close.png"
+# define COLLECTIBLES "../game_assets/objects/Collectibles/gold.png"
+
 typedef struct s_point
 {
 	int32_t	x;
 	int32_t	y;
 }	t_point;
+
+typedef enum game_entities
+{
+	W1,
+	W2,
+	W3,
+	W4,
+	WL,
+	WR,
+	WT,
+	WB,
+	GR,
+	CH,
+	OG,
+	CG,
+	COL
+}	t_game_entities;
 
 typedef	struct s_queue
 {
@@ -69,7 +107,14 @@ typedef struct s_map
 
 typedef struct s_solong
 {
-	t_map	*map;
+	mlx_t		*windows;
+	mlx_image_t	**img;
+	t_map		*map;
+	int32_t		move;
+	int32_t		collectibles;
+	t_point		cur;
+	t_point		next;
+
 } t_solong;
 
 //Utilities
@@ -84,7 +129,7 @@ void		map_validation(t_map *map);
 
 //utils
 void	character_count(t_map *map, int32_t row);
-void	file_validation(char *map_file, int *fd);
+void	file_validation(char *map_file, int32_t *fd);
 
 //bfs
 void	enqueue(t_queue *q, t_point point);
@@ -99,5 +144,8 @@ void	game_map_error(int32_t status, char *msg, t_map *map);
 void	map_file_error(int32_t status, char *msg, int32_t fd);
 void	path_error(int32_t status, char *msg, t_map *map);
 void	memory_error(int32_t status, char *msg, t_map *map);
+
+//EXECUTION
+int		game_start(t_solong *game);
 
 #endif
