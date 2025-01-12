@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_operation.c                                   :+:      :+:    :+:   */
+/*   game_end.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 15:24:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 12:45:35 by caonguye         ###   ########.fr       */
+/*   Created: 2025/01/12 12:12:09 by caonguye          #+#    #+#             */
+/*   Updated: 2025/01/12 12:15:20 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-static void	game_done(void *param)
-{
-	game_end((t_solong *)param, 1);
-}
-
-int	game_start(t_solong *game)
+void	game_end(t_solong *game, int exit_status)
 {
 	(void)game;
-	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
-	game->windows = mlx_init(game->map->length * pixel
-		, game->map->width * pixel, "abc", 1);
-	graphic(game);
-	display_img_to_windows(game);
-	mlx_key_hook(game->windows, game_control, game);
-	mlx_close_hook(game->windows, game_done, game);
-	mlx_loop(game->windows);
-	return (0);
+	exit(exit_status);
 }

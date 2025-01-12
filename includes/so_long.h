@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 09:46:34 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/12 12:51:22 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int32_t execution(char **av);
 void	read_map(char *map_file, t_map *map);
 
 //map_validation
-void		map_validation(t_map *map);
+void	map_validation(t_map *map);
 
 //utils
 void	character_count(t_map *map, int32_t row);
@@ -151,5 +151,7 @@ void	memory_error(int32_t status, char *msg, t_map *map);
 int		game_start(t_solong *game);
 void	graphic(t_solong *game);
 void	display_img_to_windows(t_solong *game);
+void	game_control(mlx_key_data_t keypress, void *param);
+void	game_end(t_solong *game, int exit_status);
 
 #endif

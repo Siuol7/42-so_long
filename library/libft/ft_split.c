@@ -6,12 +6,11 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 05:45:47 by caonguye          #+#    #+#             */
-/*   Updated: 2024/12/18 19:48:44 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/12 12:48:44 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static size_t	ft_wordcount(char const *s, char c)
 {

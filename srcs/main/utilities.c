@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:55:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/10 17:26:24 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/12 12:11:06 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int execution(char **av)
 	ft_bzero(&game, sizeof(game));
 	game.map = &map;
 	game_start(&game);
+	game_end(&game, 1);
 	ft_free_2d((void **)map.game_map);
 	return (1);
 }

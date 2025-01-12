@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 20:51:56 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 10:01:22 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/12 11:17:21 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	display(t_solong *game, mlx_image_t *img, int row, int col)
 {
-	if (!mlx_image_to_window(game->windows, img, row * pixel, col * pixel))
+	if (mlx_image_to_window(game->windows, img, col * pixel, row * pixel) < 0)
 		//game_error
 		return ;
 }
@@ -51,24 +51,24 @@ static void	display_wall(t_solong *game, int row, int col)
 		{
 			if ((row != 0 && row != game->map->width -1)
 				&& col == 0)
-				display(game, game->img[WT], row, col);
+				display(game, game->img[WL], row, col);
 			else if ((row != 0 && row != game->map->width -1)
 				&& col == game->map->length - 1)
-				display(game, game->img[WB], row, col);
+				display(game, game->img[WR], row, col);
 			else if ((col != 0 && col != game->map->length -1)
 				&& row == 0)
-				display(game, game->img[WL], row, col);
+				display(game, game->img[WT], row, col);
 			else if ((col != 0 && col != game->map->length -1)
 				&& row == game->map->width - 1)
-				display(game, game->img[WR], row, col);
+				display(game, game->img[WB], row, col);
 		}
 	}
-	row = game->map->length - 1;
-	col = game->map->width - 1;
+	row = game->map->width - 1;
+	col = game->map->length - 1;
 	display(game, game->img[W1], 0, 0);
-	display(game, game->img[W2], col, 0);
-	display(game, game->img[W3], 0, row);
-	display(game, game->img[W4], col, row);
+	display(game, game->img[W2], 0, col);
+	display(game, game->img[W3], row, 0);
+	display(game, game->img[W4], row, col);
 }
 
 static void	display_extra(t_solong *game, int row, int col)

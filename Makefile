@@ -37,7 +37,9 @@ PARSING_C			:=	map_validation.c	\
 
 EXECUTION_C			:=	game_operation.c	\
 						graphic.c			\
-						display_image.c
+						display_image.c		\
+						game_control.c		\
+						game_end.c
 
 ERROR_C				:= error_handling.c
 
