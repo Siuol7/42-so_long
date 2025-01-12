@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 01:01:11 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/05 01:48:45 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/12 13:35:21 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int		ft_free_process_2d(char **arr, size_t cur);
 int		ft_free_process_3d(char ***arr, size_t cur);
 void	ft_free_2d(void **arr);
 void	ft_free_3d(void ***arr);
+void	ft_free_2d_int(int **arr, int size);
+void	ft_free_3d_int(int ***arr, int size);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	*ft_memset(void *s, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);

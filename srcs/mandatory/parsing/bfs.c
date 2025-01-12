@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 20:07:11 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 12:33:22 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/12 13:35:27 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int32_t	bfs(t_map *map, int32_t width, int32_t length)
 	int32_t		i;
 	int32_t		**visited;
 
-	i = 0;
+	i = -1;
 	d = malloc(sizeof(t_dimension));
 	if (!d)
 		memory_error(0, "Error:\n Not enough memory\n", map);
@@ -90,18 +90,19 @@ int32_t	bfs(t_map *map, int32_t width, int32_t length)
 	visited = (int32_t **)malloc(width * sizeof(int32_t *));
 	if (!visited)
 		memory_error(0, "Error:\n Not enough memory\n", map);
-	while (i < width)
+	while (++i < width)
 	{
 		visited[i] = (int32_t *)malloc(length * sizeof(int32_t));
 		if (!visited[i])
 			memory_error(0, "Error:\n Not enough memory\n", map);
-		ft_bzero(visited[i++], length * sizeof(int32_t));
+		ft_bzero(visited[i], length * sizeof(int32_t));
 	}
 	visited[map->start.x][map->start.y] = 1;
 	enqueue(q, map->start);
 	i = (find_path(map, q, visited, d));
-	//ft_free_2d((void **)visited);
+	ft_free_2d_int(visited, map->width);
 	free(d);
 	free(q);
+	free(q->data);
 	return (i);
 }

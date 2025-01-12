@@ -1,29 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_2d.c                                       :+:      :+:    :+:   */
+/*   ft_free_3d_int.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/29 08:05:24 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 13:30:53 by caonguye         ###   ########.fr       */
+/*   Created: 2025/01/12 13:32:04 by caonguye          #+#    #+#             */
+/*   Updated: 2025/01/12 13:35:10 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_free_2d(void **arr)
+void	ft_free_3d_int(int ***arr, int size)
 {
-	int	i;
-
-	i = 0;
-	if (!arr)
+	if (!*arr)
 		return ;
-	while (arr[i])
-	{
-		free(arr[i]);
-		arr[i] = NULL;
-		i++;
-	}
-	free(arr);
+	ft_free_2d_int(*arr, size);
+	*arr = NULL;
 }
