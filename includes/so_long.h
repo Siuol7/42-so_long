@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/10 17:12:38 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/12 09:46:34 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,24 @@
 # define ENT_IMG 13
 
 //Wall and Ground
-# define WALL1 "../game_assets/wall/w1.png"
-# define WALL2 "../game_assets/wall/w2.png"
-# define WALL3 "../game_assets/wall/w3.png"
-# define WALL4 "../game_assets/wall/w4.png"
-# define WALLL "../game_assets/wall/left.png"
-# define WALLR "../game_assets/wall/right.png"
-# define WALLT "../game_assets/wall/top.png"
-# define WALLB "../game_assets/wall/bottom.png"
-# define GROUND "../game_assets/wall/ground.png"
+# define WALL1 "game_assets/wall/w1.png"
+# define WALL2 "game_assets/wall/w2.png"
+# define WALL3 "game_assets/wall/w3.png"
+# define WALL4 "game_assets/wall/w4.png"
+# define WALLL "game_assets/wall/left.png"
+# define WALLR "game_assets/wall/right.png"
+# define WALLT "game_assets/wall/top.png"
+# define WALLB "game_assets/wall/bottom.png"
+# define GROUND "game_assets/wall/ground.png"
 
 //Character
-# define CHARACTER "../game_assets/character/Walk.png"
+# define CHARACTER "game_assets/character/character.png"
 
 //Objects
-# define OPENED_GATE "../game_assets/objects/gate/open.png"
-# define CLOSED_GATE "../game_assets/objects/gate/close.png"
-# define COLLECTIBLES "../game_assets/objects/Collectibles/gold.png"
+# define OPENED_GATE "game_assets/objects/gate/open.png"
+# define CLOSED_GATE "game_assets/objects/gate/close.png"
+# define COLLECTIBLES "game_assets/objects/Collectibles/soul.png"
+# define OBSTACLES	"game_assets/wall/obstacles.png"
 
 typedef struct s_point
 {
@@ -72,7 +73,8 @@ typedef enum game_entities
 	CH,
 	OG,
 	CG,
-	COL
+	COL,
+	OBS,
 }	t_game_entities;
 
 typedef	struct s_queue
@@ -147,5 +149,7 @@ void	memory_error(int32_t status, char *msg, t_map *map);
 
 //EXECUTION
 int		game_start(t_solong *game);
+void	graphic(t_solong *game);
+void	display_img_to_windows(t_solong *game);
 
 #endif

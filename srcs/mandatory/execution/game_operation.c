@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:24:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/10 20:38:04 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/12 07:41:03 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	game_start(t_solong *game)
 	game->windows = mlx_init(game->map->width * pixel, game->map->length * pixel
 		,"abc", 1);
 	graphic(game);
+	display_img_to_windows(game);
 	mlx_loop(game->windows);
 	return (0);
 }

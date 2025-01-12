@@ -35,7 +35,9 @@ PARSING_C			:=	map_validation.c	\
 						bfs.c				\
 						bfs_utils.c
 
-EXECUTION_C			:= game_operation.c
+EXECUTION_C			:=	game_operation.c	\
+						graphic.c			\
+						display_image.c
 
 ERROR_C				:= error_handling.c
 
