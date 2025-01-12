@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 20:51:56 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 11:17:21 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/12 17:40:24 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ static void	display_obj(t_solong *game, int row, int col)
 			display(game, game->img[GR], row, col);
 			if (game->map->game_map[row][col] == 'C')
 				display(game, game->img[COL], row, col);
-			else if (game->map->game_map[row][col] == 'P')
-				display(game, game->img[CH], row, col);
 			else if (game->map->game_map[row][col] == '0')
 				display(game, game->img[GR], row, col);
 			else if (game->map->game_map[row][col] == 'E')
@@ -73,7 +71,7 @@ static void	display_wall(t_solong *game, int row, int col)
 
 static void	display_extra(t_solong *game, int row, int col)
 {
-		while (++row < game->map->width)
+	while (++row < game->map->width)
 	{
 		col = -1;
 		while (++col < game->map->length)
@@ -84,6 +82,7 @@ static void	display_extra(t_solong *game, int row, int col)
 				display(game, game->img[OBS], row, col);
 		}
 	}
+	display(game, game->img[CH], game->cur.x, game->cur.y);
 }
 
 void	display_img_to_windows(t_solong *game)

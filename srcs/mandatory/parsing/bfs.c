@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 20:07:11 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 13:35:27 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/12 13:43:41 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int32_t	bfs(t_map *map, int32_t width, int32_t length)
 	i = (find_path(map, q, visited, d));
 	ft_free_2d_int(visited, map->width);
 	free(d);
-	free(q);
 	free(q->data);
+	free(q);
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 12:12:09 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 12:15:20 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/12 18:04:35 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,25 @@
 
 void	game_end(t_solong *game, int exit_status)
 {
-	(void)game;
+	int	i;
+	if (!game)
+		return ;
+	if (!game->map && game->map->game_map)
+		ft_free_3d((void***)game->map->game_map);
+	if (!game->img)
+	{
+		i = 0;
+		while (i < ENT_IMG)
+		{
+			if (game->img[i])
+			{
+				mlx_delete_image(game->windows, game->img[i]);
+				i++;
+			}
+		}
+		free(game->img);
+	}
+	if (!game->windows)
+		mlx_terminate(game->windows);
 	exit(exit_status);
 }

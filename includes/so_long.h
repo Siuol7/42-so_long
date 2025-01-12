@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 12:51:22 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/12 14:14:19 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 
 # define BUFFER_SIZE 2041
 
-# define ENT_IMG 13
+# define ENT_IMG 14
 
 //Wall and Ground
 # define WALL1 "game_assets/wall/w1.png"

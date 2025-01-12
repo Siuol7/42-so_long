@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 18:28:14 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 13:16:57 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/12 14:12:23 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	get_map(int fd, t_map *map)
 		map_file_error(0, "Error:\nReading map failed\n", fd);
 	else if (readbytes == 0)
 		map_file_error(0, "Error\n Empty map\n", fd);
-	else if (readbytes > BUFFER_SIZE - 1)
+	else if (readbytes > BUFFER_SIZE)
 		map_file_error(0, "Error:\nNot support this resolution\n", fd);
 	line[readbytes] = '\0';
 	close(fd);

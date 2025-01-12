@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 10:17:06 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 12:26:31 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/12 17:56:27 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	got_collectible(t_solong *game)
 	i = 0;
 	while (i < game->map->char_C)
 	{
-		if (game->img[COL]->instances[i].y != game->cur.x
-		&& game->img[COL]->instances[i].x != game->cur.y)
+		if (game->img[COL]->instances[i].y == game->cur.x * pixel
+		&& game->img[COL]->instances[i].x == game->cur.y * pixel)
 		{
 			game->img[COL]->instances[i].enabled = false;
 			game->collectibles++;
@@ -33,12 +33,19 @@ static void	got_collectible(t_solong *game)
 static void	play(t_solong *game)
 {
 	game->cur = game->next;
-	if (game->map->game_map[game->next.x][game->next.y] == 'C')
+	ft_printf_fd(1, "Current number of movements:%d\n", ++game->move);
+	if (game->map->game_map[game->cur.x][game->cur.y] == 'C')
 	{
-		game->map->game_map[game->next.x][game->next.y] = '0';
+		game->map->game_map[game->cur.x][game->cur.y] = '0';
 		got_collectible(game);
 		if (game->collectibles == game->map->char_C)
 			game->img[CG]->instances[0].enabled = false;
+	}
+	else if (game->map->game_map[game->cur.x][game->cur.y] == 'E'
+		&& game->collectibles == game->map->char_C)
+	{
+		ft_printf_fd(1, "You win!\n");
+		game_end(game, 1);
 	}
 	game->img[CH]->instances[0].x = game->cur.y * pixel;
 	game->img[CH]->instances[0].y = game->cur.x * pixel;

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 20:38:20 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 09:49:10 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/12 14:14:29 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ static mlx_image_t	*graphic_parse(t_solong *game, const char *png_src)
 	mlx_texture_t	*texture;
 	mlx_image_t		*image;
 
-	if (access(png_src, F_OK) == -1)
-    	ft_printf_fd(2, "problem %s", png_src);
 	texture = mlx_load_png(png_src);
 	if (!texture)
 		ft_printf_fd(2, "line 22");
@@ -33,7 +31,7 @@ static mlx_image_t	*graphic_parse(t_solong *game, const char *png_src)
 
 void	graphic(t_solong *game)
 {
-	game->img = ft_calloc(pixel + 1, sizeof(mlx_image_t));
+	game->img = ft_calloc(ENT_IMG + 1, sizeof(mlx_image_t));
 	if (!game->img)
 		ft_printf_fd(2, "line 36");
 	game->img[W1] = graphic_parse(game, WALL1);
