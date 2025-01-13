@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/13 19:27:03 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/13 19:36:46 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,8 @@ int32_t	is_empty(t_queue *q);
 void	assign_dimension(t_dimension *d);
 int32_t	bfs(t_map *map, int32_t width, int32_t length);
 t_queue	*create_queue(int32_t size);
-void	ft_free_queue(t_queue *q, t_dimension *d, int32_t **visited, t_map *map);
+void	ft_free_queue(t_queue *q, t_dimension *d,
+			int32_t **visited, t_map *map);
 
 //ERROR_HANDLING
 void	game_map_error(int32_t status, char *msg, t_map *map);

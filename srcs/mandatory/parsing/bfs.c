@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 20:07:11 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/13 19:29:24 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/13 19:49:40 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,22 @@ t_queue	*create_queue(int32_t size)
 	return (q);
 }
 
+static void	visited_generating(int32_t **visited,
+			int32_t width, int32_t length, t_map *map)
+{
+	int32_t	i;
+
+	i = -1;
+	while (++i < width)
+	{
+		visited[i] = (int32_t *)malloc(length * sizeof(int32_t));
+		if (!visited[i])
+			memory_error(0, "Error:\n Not enough memory\n", map);
+		ft_bzero(visited[i], length * sizeof(int32_t));
+	}
+	visited[map->start.x][map->start.y] = 1;
+}
+
 int32_t	bfs(t_map *map, int32_t width, int32_t length)
 {
 	t_queue		*q;
@@ -93,14 +109,7 @@ int32_t	bfs(t_map *map, int32_t width, int32_t length)
 	visited = (int32_t **)malloc(width * sizeof(int32_t *));
 	if (!visited)
 		memory_error(0, "Error:\n Not enough memory\n", map);
-	while (++i < width)
-	{
-		visited[i] = (int32_t *)malloc(length * sizeof(int32_t));
-		if (!visited[i])
-			memory_error(0, "Error:\n Not enough memory\n", map);
-		ft_bzero(visited[i], length * sizeof(int32_t));
-	}
-	visited[map->start.x][map->start.y] = 1;
+	visited_generating(visited, width, length, map);
 	enqueue(q, map->start);
 	i = (find_path(map, q, visited, d));
 	ft_free_queue(q, d, visited, map);
