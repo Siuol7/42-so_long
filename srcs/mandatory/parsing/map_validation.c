@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 02:57:42 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/07 02:31:41 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/13 19:02:54 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	wall_border_validation(t_map *map)
 			if (map->game_map[row - 1][col] != '1')
 				game_map_error(0, "Error:\nInvalid boder\n", map);
 		}
-		row += (map->width);
+		row += (map->width - 1);
 	}
 	col = 1;
 	while (col - 1 < map->length)
@@ -43,18 +43,18 @@ static void	wall_border_validation(t_map *map)
 			if (map->game_map[row][col - 1] != '1')
 				game_map_error(0, "Error:\nInvalid border\n", map);
 		}
-		col += (map->length);
+		col += (map->length - 1);
 	}
 }
 
 static void	character_validation(t_map *map)
 {
 	character_count(map, -1);
-	if (map->char_P != 1)
+	if (map->char_p != 1)
 		game_map_error(0, "Error:\nInvalid number of players\n", map);
-	if (map->char_E != 1)
+	if (map->char_e != 1)
 		game_map_error(0, "Error:\nInvalid number of exits\n", map);
-	if (map->char_C < 1)
+	if (map->char_c < 1)
 		game_map_error(0, "Error:\nNo collectibles\n", map);
 	if (map->char_0 == 0)
 		game_map_error(0, "Error:\nNo path\n", map);

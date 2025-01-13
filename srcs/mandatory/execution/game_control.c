@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 10:17:06 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 17:56:27 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:26:05 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static void	got_collectible(t_solong *game)
 	int32_t	i;
 
 	i = 0;
-	while (i < game->map->char_C)
+	while (i < game->map->char_c)
 	{
-		if (game->img[COL]->instances[i].y == game->cur.x * pixel
-		&& game->img[COL]->instances[i].x == game->cur.y * pixel)
+		if (game->img[COL]->instances[i].y == game->cur.x * PIXEL
+			&& game->img[COL]->instances[i].x == game->cur.y * PIXEL)
 		{
 			game->img[COL]->instances[i].enabled = false;
 			game->collectibles++;
@@ -38,17 +38,17 @@ static void	play(t_solong *game)
 	{
 		game->map->game_map[game->cur.x][game->cur.y] = '0';
 		got_collectible(game);
-		if (game->collectibles == game->map->char_C)
+		if (game->collectibles == game->map->char_c)
 			game->img[CG]->instances[0].enabled = false;
 	}
 	else if (game->map->game_map[game->cur.x][game->cur.y] == 'E'
-		&& game->collectibles == game->map->char_C)
+		&& game->collectibles == game->map->char_c)
 	{
 		ft_printf_fd(1, "You win!\n");
 		game_end(game, 1);
 	}
-	game->img[CH]->instances[0].x = game->cur.y * pixel;
-	game->img[CH]->instances[0].y = game->cur.x * pixel;
+	game->img[CH]->instances[0].x = game->cur.y * PIXEL;
+	game->img[CH]->instances[0].y = game->cur.x * PIXEL;
 }
 
 void	game_control(mlx_key_data_t keypress, void *param)
@@ -59,7 +59,7 @@ void	game_control(mlx_key_data_t keypress, void *param)
 	if (keypress.action == MLX_PRESS)
 	{
 		if (keypress.key == MLX_KEY_ESCAPE)
-		 	game_end(game, 1);
+			game_end(game, 1);
 		if (keypress.key == MLX_KEY_UP || keypress.key == MLX_KEY_W)
 			game->next = (t_point){game->cur.x - 1, game->cur.y};
 		else if (keypress.key == MLX_KEY_DOWN || keypress.key == MLX_KEY_S)

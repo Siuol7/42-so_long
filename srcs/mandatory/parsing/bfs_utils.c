@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   BFS_utils.c                                        :+:      :+:    :+:   */
+/*   bfs_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:51:28 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/07 01:15:59 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/13 19:26:03 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,12 @@ void	assign_dimension(t_dimension *d)
 	d->dy[1] = 1;
 	d->dy[2] = 0;
 	d->dy[3] = 0;
+}
+
+void	ft_free_queue(t_queue *q, t_dimension *d, int32_t **visited, t_map *map)
+{
+	ft_free_2d_int(visited, map->width);
+	free(d);
+	free(q->data);
+	free(q);
 }

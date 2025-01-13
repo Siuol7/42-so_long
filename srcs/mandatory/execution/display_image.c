@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 20:51:56 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 17:40:24 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:23:59 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 static void	display(t_solong *game, mlx_image_t *img, int row, int col)
 {
-	if (mlx_image_to_window(game->windows, img, col * pixel, row * pixel) < 0)
-		//game_error
-		return ;
+	if (mlx_image_to_window(game->windows, img, col * PIXEL, row * PIXEL) < 0)
+		game_error(mlx_strerror(mlx_errno), game);
 }
 
 static void	display_obj(t_solong *game, int row, int col)

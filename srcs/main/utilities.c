@@ -6,13 +6,13 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:55:21 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 21:38:32 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/13 18:19:01 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <so_long.h>
 
-int execution(char **av)
+int	execution(char **av)
 {
 	t_map		map;
 	t_solong	game;

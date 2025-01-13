@@ -94,9 +94,9 @@ bonus : .bonus
 
 # Clean target
 clean:
-		@(RM) $(OBJS) $(OBJS_BN) .mandatory .bonus $(MLX42_DIR)/build
-		@$(MAKE) -C $(LIBFT_DIR) clean
-		@$(MAKE) -C $(FT_PRINTF_FD_DIR) clean
+	@$(RM) $(OBJS) $(OBJS_BN) .mandatory .bonus $(MLX42_DIR)/build
+	@$(MAKE) -C $(LIBFT_DIR) clean
+	@$(MAKE) -C $(FT_PRINTF_FD_DIR) clean
 
 # Fclean target
 fclean:

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 20:07:11 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 13:43:41 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/13 19:29:24 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,13 @@ static int32_t	find_path(t_map *map, t_queue *q
 			move_in_graph(map, q, visited, new);
 		}
 	}
-	if (q->collec == map->char_C && q->exit == 1)
+	if (q->collec == map->char_c && q->exit == 1)
 		return (1);
-	else if (q->collec != map->char_C)
+	else if (q->collec != map->char_c)
+	{
+		ft_free_queue(q, d, visited, map);
 		path_error(0, "Error:\nNo path to collectibles", map);
+	}
 	return (0);
 }
 
@@ -100,9 +103,6 @@ int32_t	bfs(t_map *map, int32_t width, int32_t length)
 	visited[map->start.x][map->start.y] = 1;
 	enqueue(q, map->start);
 	i = (find_path(map, q, visited, d));
-	ft_free_2d_int(visited, map->width);
-	free(d);
-	free(q->data);
-	free(q);
+	ft_free_queue(q, d, visited, map);
 	return (i);
 }
