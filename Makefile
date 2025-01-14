@@ -95,14 +95,14 @@ bonus : .bonus
 
 # Clean target
 clean:
-	@$(RM) $(OBJS) $(OBJS_BN) .mandatory .bonus $(MLX42_DIR)/build .mlx42
+	@$(RM) $(OBJS) $(OBJS_BN) .mandatory .bonus $(MLX42_DIR)/build .mlx42 $(NAME)
 	@$(MAKE) -C $(LIBFT_DIR) clean
 	@$(MAKE) -C $(FT_PRINTF_FD_DIR) clean
 
 # Fclean target
 fclean:
 		@echo "----------------------------Cleaning----------------------------"
-		@$(RM) $(OBJS) $(OBJS_BN) .bonus .mandatory .mlx42 $(MLX42_DIR)
+		@$(RM) $(OBJS) $(OBJS_BN) .bonus .mandatory .mlx42 $(MLX42_DIR) $(NAME)
 		@$(MAKE) -C $(LIBFT_DIR) fclean
 		@$(MAKE) -C $(FT_PRINTF_FD_DIR) fclean
 		@echo "----------------------------Finished----------------------------"
