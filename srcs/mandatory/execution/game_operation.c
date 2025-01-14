@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 15:24:45 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/13 22:05:24 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/14 18:22:30 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	game_done(void *param)
 
 int	game_start(t_solong *game)
 {
-	(void)game;
 	mlx_set_setting(MLX_STRETCH_IMAGE, 1);
 	game->windows = mlx_init(game->map->length * PIXEL,
 			game->map->width * PIXEL, "so_long", 1);

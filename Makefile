@@ -33,7 +33,8 @@ PARSING_C			:=	map_validation.c	\
 						read_map.c			\
 						utils.c				\
 						bfs.c				\
-						bfs_utils.c
+						bfs_utils.c			\
+						assets_validation.c
 
 EXECUTION_C			:=	game_operation.c	\
 						graphic.c			\

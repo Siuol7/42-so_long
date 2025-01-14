@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 20:07:11 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/13 19:49:40 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/14 17:59:41 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int32_t	find_path(t_map *map, t_queue *q
 	else if (q->collec != map->char_c)
 	{
 		ft_free_queue(q, d, visited, map);
-		path_error(0, "Error:\nNo path to collectibles", map);
+		path_error(0, "Error:\nNo path to collectibles\n", map);
 	}
 	return (0);
 }

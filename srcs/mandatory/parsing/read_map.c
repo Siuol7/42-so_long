@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 18:28:14 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/13 22:27:50 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/14 18:44:40 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	read_map(char *map_file, t_map *map)
 	int32_t	fd;
 
 	file_validation(map_file, &fd);
+	assets_validation();
 	get_map(fd, map);
 	map_validation(map);
 }
