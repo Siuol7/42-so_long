@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 18:28:14 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/14 18:44:40 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/14 19:16:13 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static void	get_map(int fd, t_map *map)
 {
 	char		line[BUFFER_SIZE];
+	int32_t		line_no;
 	int32_t		readbytes;
 
 	readbytes = read(fd, line, BUFFER_SIZE);
@@ -25,10 +26,17 @@ static void	get_map(int fd, t_map *map)
 	else if (readbytes > BUFFER_SIZE)
 		map_file_error(0, "Error:\nNot support this resolution\n", fd);
 	line[readbytes] = '\0';
+	line_no = (int32_t)ft_char_cnt_2d(line, '\n');
 	close(fd);
 	map->game_map = ft_split(line, '\n');
 	if (!map->game_map || !*map->game_map)
 		game_map_error(0, "Error:\nGenerating map failed\n", map);
+	if (line_no != ft_2d_size(map->game_map))
+	{
+		ft_printf_fd(2, "Error:\nMap is not rectangular shape.\n");
+		ft_free_2d((void **)map->game_map);
+		exit(0);
+	}
 }
 
 void	read_map(char *map_file, t_map *map)
