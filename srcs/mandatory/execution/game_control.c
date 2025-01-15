@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 10:17:06 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/13 18:26:05 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/15 22:28:30 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	game_control(mlx_key_data_t keypress, void *param)
 	t_solong	*game;
 
 	game = (t_solong *)param;
-	if (keypress.action == MLX_PRESS)
+	if (keypress.action == MLX_PRESS || keypress.action == MLX_REPEAT)
 	{
 		if (keypress.key == MLX_KEY_ESCAPE)
 			game_end(game, 1);
