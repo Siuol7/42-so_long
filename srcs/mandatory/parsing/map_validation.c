@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 02:57:42 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/14 18:44:12 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/15 20:15:27 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	wall_border_validation(t_map *map)
 		while (++col < map->length)
 		{
 			if (map->game_map[row - 1][col] != '1')
-				game_map_error(0, "Error:\nInvalid boder\n", map);
+				game_map_error(0, "Error:\nInvalid border\n", map);
 		}
 		row += (map->width - 1);
 	}
@@ -56,8 +56,6 @@ static void	character_validation(t_map *map)
 		game_map_error(0, "Error:\nInvalid number of exits\n", map);
 	if (map->char_c < 1)
 		game_map_error(0, "Error:\nNo collectibles\n", map);
-	if (map->char_0 == 0)
-		game_map_error(0, "Error:\nNo path\n", map);
 }
 
 static void	shape_validation(t_map *map)
@@ -75,7 +73,11 @@ static void	shape_validation(t_map *map)
 		i++;
 	}
 	map->length = ft_strlen(map->game_map[0]);
+	if (map->length > WINDOW_LENGTH)
+		game_map_error(0, "Error:\nNot support this resolution\n", map);
 	map->width = ft_2d_size(map->game_map);
+	if (map->width > WINDOW_WIDTH)
+		game_map_error(0, "Error:\nNot support this resolution\n", map);
 }
 
 void	map_validation(t_map *map)

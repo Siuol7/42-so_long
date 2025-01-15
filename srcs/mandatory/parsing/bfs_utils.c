@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 15:51:28 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/13 19:26:03 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/15 19:44:27 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,14 @@ void	assign_dimension(t_dimension *d)
 	d->dy[3] = 0;
 }
 
-void	ft_free_queue(t_queue *q, t_dimension *d, int32_t **visited, t_map *map)
+void	ft_free_queue(t_queue *q, t_map *map)
 {
-	ft_free_2d_int(visited, map->width);
-	free(d);
-	free(q->data);
-	free(q);
+	if (q->visited)
+		ft_free_2d_int(q->visited, map->width);
+	if (q->dim)
+		free(q->dim);
+	if (q->data)
+		free(q->data);
+	if (q)
+		free(q);
 }

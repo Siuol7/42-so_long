@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 04:17:05 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/12 22:09:49 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/15 19:39:46 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ void	path_error(int32_t status, char *msg, t_map *map)
 	exit(status);
 }
 
-void	memory_error(int32_t status, char *msg, t_map *map)
+void	memory_error(t_queue *q, int32_t status, char *msg, t_map *map)
 {
 	ft_free_2d((void **)map->game_map);
+	ft_free_queue(q, map);
 	ft_printf_fd(2, "%s", msg);
 	exit(status);
 }

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/14 18:42:31 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/15 19:42:53 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,21 +77,23 @@ typedef enum game_entities
 	OBS,
 }	t_game_entities;
 
-typedef struct s_queue
-{
-	t_point	*data;
-	int32_t	top;
-	int32_t	bottom;
-	int32_t	size;
-	int32_t	collec;
-	int32_t	exit;
-}	t_queue;
-
 typedef struct s_dimension
 {
 	int	dy[4];
 	int	dx[4];
 }	t_dimension;
+
+typedef struct s_queue
+{
+	t_point		*data;
+	t_dimension	*dim;
+	int32_t		**visited;
+	int32_t		top;
+	int32_t		bottom;
+	int32_t		size;
+	int32_t		collec;
+	int32_t		exit;
+}	t_queue;
 
 typedef struct s_map
 {
@@ -141,14 +143,13 @@ int32_t	is_empty(t_queue *q);
 void	assign_dimension(t_dimension *d);
 int32_t	bfs(t_map *map, int32_t width, int32_t length);
 t_queue	*create_queue(int32_t size);
-void	ft_free_queue(t_queue *q, t_dimension *d,
-			int32_t **visited, t_map *map);
+void	ft_free_queue(t_queue *q, t_map *map);
 
 //ERROR_HANDLING
 void	game_map_error(int32_t status, char *msg, t_map *map);
 void	map_file_error(int32_t status, char *msg, int32_t fd);
 void	path_error(int32_t status, char *msg, t_map *map);
-void	memory_error(int32_t status, char *msg, t_map *map);
+void	memory_error(t_queue *q, int32_t status, char *msg, t_map *map);
 
 //EXECUTION
 int		game_start(t_solong *game);

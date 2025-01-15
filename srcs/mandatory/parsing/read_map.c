@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 18:28:14 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/14 19:16:13 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/15 18:57:09 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	get_map(int fd, t_map *map)
 	map->game_map = ft_split(line, '\n');
 	if (!map->game_map || !*map->game_map)
 		game_map_error(0, "Error:\nGenerating map failed\n", map);
-	if (line_no != ft_2d_size(map->game_map))
+	if (line_no + 1 != ft_2d_size(map->game_map))
 	{
 		ft_printf_fd(2, "Error:\nMap is not rectangular shape.\n");
 		ft_free_2d((void **)map->game_map);
