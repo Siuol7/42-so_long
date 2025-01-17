@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 18:32:43 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/14 18:51:39 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/17 19:23:30 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	access_check(const char *png_src)
 	fd = open(png_src, O_RDONLY);
 	if (fd < 0)
 		png_src_error(0, png_src, fd);
+	close(fd);
 }
 
 void	assets_validation(void)

@@ -6,7 +6,7 @@
 /*   By: caonguye <caonguye@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:56:04 by caonguye          #+#    #+#             */
-/*   Updated: 2025/01/15 19:42:53 by caonguye         ###   ########.fr       */
+/*   Updated: 2025/01/17 20:33:42 by caonguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../library/libft/libft.h"
 # include "../library/ft_printf_fd/ft_printf.h"
-# include <stdio.h>
 # include <fcntl.h>
 # include <errno.h>
 # include "MLX42.h"
