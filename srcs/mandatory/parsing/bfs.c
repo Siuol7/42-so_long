@@ -83,10 +83,9 @@ static void	visited_generating(t_queue *q,
 	i = -1;
 	while (++i < width)
 	{
-		q->visited[i] = (int32_t *)malloc(length * sizeof(int32_t));
+		q->visited[i] = (int32_t *)calloc(length, sizeof(int32_t));
 		if (!q->visited[i])
 			memory_error(q, 0, "Error:\nNot enough memory\n", map);
-		ft_bzero(q->visited[i], length * sizeof(int32_t));
 	}
 	q->visited[map->start.x][map->start.y] = 1;
 }
@@ -95,15 +94,14 @@ int32_t	bfs(t_map *map, int32_t width, int32_t length)
 {
 	t_queue		*q;
 	int32_t		i;
+	t_dimension	dimension;
 
 	i = -1;
 	q = create_queue(map->length * map->width);
 	if (!q)
 		memory_error(q, 0, "Error:\nNot enough memory\n", map);
-	q->dim = malloc(sizeof(t_dimension));
-	if (!q->dim)
-		memory_error(q, 0, "Error:\nNot enough memory\n", map);
 	q->visited = (int32_t **)malloc(width * sizeof(int32_t *));
+	q->dim = &dimension;
 	if (!q->visited)
 		memory_error(q, 0, "Error:\nNot enough memory\n", map);
 	visited_generating(q, width, length, map);

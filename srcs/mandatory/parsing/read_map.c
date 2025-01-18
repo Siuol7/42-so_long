@@ -18,7 +18,7 @@ static void	get_map(int fd, t_map *map)
 	int32_t		line_no;
 	int32_t		readbytes;
 
-	readbytes = read(fd, line, BUFFER_SIZE);
+	readbytes = read(fd, line, BUFFER_SIZE + 1);
 	if (readbytes < 0)
 		map_file_error(0, "Error:\nReading map failed\n", fd);
 	else if (readbytes == 0)

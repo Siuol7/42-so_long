@@ -43,12 +43,11 @@ void	assign_dimension(t_dimension *d)
 
 void	ft_free_queue(t_queue *q, t_map *map)
 {
-	if (q->visited)
-		ft_free_2d_int(q->visited, map->width);
-	if (q->dim)
-		free(q->dim);
+	if (!q)
+		return ;
 	if (q->data)
 		free(q->data);
-	if (q)
-		free(q);
+	if (q->visited)
+		ft_free_2d_int(q->visited, map->width);
+	free(q);
 }

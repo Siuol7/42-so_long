@@ -20,7 +20,7 @@ void	file_validation(char *map_file, int32_t *fd)
 	if (fd < 0)
 		map_file_error(0, "Error:\n Opening file failed\n", *fd);
 	len = (int32_t)ft_strlen(map_file);
-	if (len == 0 || map_file[len - 4] != '.' || map_file[len - 3] != 'b'
+	if (len < 4 || map_file[len - 4] != '.' || map_file[len - 3] != 'b'
 		|| map_file[len - 2] != 'e' || map_file[len - 1] != 'r')
 		map_file_error(0, "Error:\nRequired .ber file\n", *fd);
 }
