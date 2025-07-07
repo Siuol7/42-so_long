@@ -39,3 +39,7 @@ make
 
 ---
 *Collect, explore, escape!*
+
+| ***Execute & Makefile tutorial*** | ***Game displaying*** |
+|-----------|--------------|
+| ![So long](https://github.com/Siuol7/Project-Overview/blob/main/assets/so_long.gif) | ![Game](https://github.com/Siuol7/Project-Overview/blob/main/assets/game.gif) |
